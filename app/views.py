@@ -62,27 +62,7 @@ def Deletedata(request,id):
 def Search(request):
     return HttpResponse("this is search")
 
-def login(request):
-    em=request.POST['Email']
-    pswd=request.POST['Password']
 
-    user = Register.objects.filter(Email=em)
-
-    if len(user) > 0:
-        if user[0].Password == pwd:
-            request.session['id'] = user[0].id
-            request.session['Email'] = user[0].Email
-            request.session['Name'] = user[0].Name
-
-
-            return redirect("registerpage")
-        else:
-            msg="Password is incorrect"
-            return render(request,"app/login.html",{'err':msg})
-
-    else:
-        msg = "User Doesn't Found"
-        return render(request,"app/login.html",{'err':msg})
 
     
 
